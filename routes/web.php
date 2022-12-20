@@ -15,4 +15,4 @@ use App\Http\Controllers\PostController;  //外部にあるPostControllerクラ�
 | contai
 */
 
-Route::get('/posts',[PostController::class, 'index']);
+Route::get('/',[PostController::class, 'index']);
