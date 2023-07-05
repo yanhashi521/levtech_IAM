@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index(Post $post)//インポートしたPostをインスタンス化して$postとして使用．
     {
-	    return view('posts/index')->with(['posts' => $post->getPaginateByLimit(5)]);
+	    return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
          //blade内で使う変数'posts'と設定。'posts'の中身にgetを使い、インスタンス化した$postを代入。
     }
     
@@ -33,6 +33,7 @@ class PostController extends Controller
     
     public function store(PostRequest $request, Post $post)
     {
+        //dd($request['post']);
         $input = $request['post'];
         $post->fill($input)->save();//インスタンス化しているpostにinputの中身を代入している．
         return redirect('/posts/' . $post->id);
@@ -56,3 +57,4 @@ class PostController extends Controller
         return redirect('/');
     }
 }
+?>
